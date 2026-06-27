@@ -71,7 +71,7 @@ export function TransactionsView({ transactions, onAddTransaction }: Transaction
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="type" className="text-right">Type</Label>
                 <div className="col-span-3">
-                  <Select value={newTx.type} onValueChange={(val: string) => val && setNewTx({...newTx, type: val as TransactionType})}>
+                  <Select value={newTx.type} onValueChange={(val: string | null) => val && setNewTx({...newTx, type: val as TransactionType})}>
                     <SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="INCOME">Income</SelectItem>
@@ -91,7 +91,7 @@ export function TransactionsView({ transactions, onAddTransaction }: Transaction
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="facility" className="text-right">Facility</Label>
                 <div className="col-span-3">
-                  <Select value={newTx.facilityId} onValueChange={(val: string) => val && setNewTx({...newTx, facilityId: val})}>
+                  <Select value={newTx.facilityId} onValueChange={(val: string | null) => val && setNewTx({...newTx, facilityId: val})}>
                     <SelectTrigger><SelectValue placeholder="Select facility" /></SelectTrigger>
                     <SelectContent>
                       {mockFacilities.map(f => (

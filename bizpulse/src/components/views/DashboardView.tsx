@@ -112,9 +112,10 @@ export function DashboardView({ transactions }: DashboardViewProps) {
                 <Tooltip
                   cursor={{ fill: '#f1f5f9' }}
                   contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                  formatter={(value: number | string) => {
-                    const numValue = Number(value);
-                    return [`$${isNaN(numValue) ? value : numValue.toLocaleString()}`, undefined];
+                  formatter={(value: any) => {
+                    const val = Array.isArray(value) ? value[0] : value;
+                    const numValue = Number(val);
+                    return [`$${isNaN(numValue) ? val : numValue.toLocaleString()}`, undefined];
                   }}
                 />
                 <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px' }} />

@@ -83,9 +83,10 @@ export function AiInsightsView() {
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} tickFormatter={(value) => `$${value/1000}k`} dx={-10} />
                 <Tooltip
                   contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                  formatter={(value: number | string) => {
-                    const numValue = Number(value);
-                    return [`$${isNaN(numValue) ? value : numValue.toLocaleString()}`, 'Cumulative Profit'];
+                  formatter={(value: any) => {
+                    const val = Array.isArray(value) ? value[0] : value;
+                    const numValue = Number(val);
+                    return [`$${isNaN(numValue) ? val : numValue.toLocaleString()}`, 'Cumulative Profit'];
                   }}
                 />
                 <ReferenceLine y={0} stroke="#94a3b8" strokeDasharray="3 3" />
